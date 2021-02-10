@@ -12,3 +12,24 @@ def home(request):
         "cle":cle,
     }
     return render(request, 'home/accueil.html',context)
+
+def detail(request, ticker):
+    dicoCompanyProfile = finnhub_client.company_profile2(symbol=ticker)
+
+    if len(dicoCompanyProfile) == 0:
+        return render(request, 'home/detail.html')
+
+    context = {
+        "name" : dicoCompanyProfile["name"],
+        "logo" : dicoCompanyProfile["logo"],
+        "ticker": dicoCompanyProfile["ticker"],
+        "country": dicoCompanyProfile["country"],
+        "finnhubIndustry": dicoCompanyProfile["finnhubIndustry"],
+        "ipo" : dicoCompanyProfile["ipo"],
+        "marketCapitalization": dicoCompanyProfile["marketCapitalization"],
+        "weburl" : dicoCompanyProfile["weburl"],
+
+
+    }
+
+    return render(request, 'home/detail.html', context)

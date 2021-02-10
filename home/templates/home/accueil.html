@@ -1,3 +1,5 @@
+# Setup client
+finnhub_client = finnhub.Client(api_key="c0db36n48v6vf7f7l8mg")
 {% extends 'home/base.html' %}
 
 {% block content %}
@@ -7,13 +9,11 @@
         <table class="table">
             <thead>
             <tr>
-
                 {% for key,value in cle.items %}
                     <th>{{ key }}</th>
 
                 {% endfor %}
             <th>Actions</th>
-
             </tr>
             </thead>
             <tbody>
@@ -21,16 +21,11 @@
                 {% for ras in listeAction %}
                     <tr>
                     {% for key,value in ras.items %}
-
                             <td>{{ value }}</td>
-
-
                     {% endfor %}
                     <td> <a href="">Détail </a> </td>
                     </tr>
                 {% endfor %}
-
-
             </tbody>
         </table>
     </div>
