@@ -4,10 +4,11 @@ import finnhub
 finnhub_client = finnhub.Client(api_key="c0db36n48v6vf7f7l8mg")
 # Create your views here.
 def home(request):
-    finnhub_client = finnhub.Client(api_key="c0db36n48v6vf7f7l8mg")
+    finnhub_client = finnhub.Client(api_key="c0hvbdv48v6qgpeh07n0")
 
     # Entreprise proposé
-    company_recommande = ["TSLA", "AMZN", "AAPL", "MFST", "NFLX", "FB"]
+    # company_recommande = ["TSLA", "AMZN", "AAPL", "MFST", "NFLX", "FB"]
+    company_recommande = ["TSLA", "AMZN", "AAPL"]
     list_recomande = []
 
     for ticker in company_recommande:
@@ -23,19 +24,19 @@ def home(request):
 
 
     # Classement
-    liste = finnhub_client.stock_symbols('US')[0:5]
+    # liste = finnhub_client.stock_symbols('US')[0:1]
     liste_company = []
-
-    for key in liste:
-        ticker = key["displaySymbol"]
-        if not len(finnhub_client.company_profile2(symbol=ticker)) == 0:
-            information = []
-            information.append(finnhub_client.company_profile2(symbol=ticker)["ticker"])
-            information.append(finnhub_client.company_profile2(symbol=ticker)["name"])
-            information.append(finnhub_client.company_profile2(symbol=ticker)["marketCapitalization"])
-            information.append(finnhub_client.company_profile2(symbol=ticker)["shareOutstanding"])
-            information.append(finnhub_client.quote(ticker)["c"])
-            liste_company.append(information)
+    #
+    # for key in liste:
+    #     ticker = key["displaySymbol"]
+    #     if not len(finnhub_client.company_profile2(symbol=ticker)) == 0:
+    #         information = []
+    #         information.append(finnhub_client.company_profile2(symbol=ticker)["ticker"])
+    #         information.append(finnhub_client.company_profile2(symbol=ticker)["name"])
+    #         information.append(finnhub_client.company_profile2(symbol=ticker)["marketCapitalization"])
+    #         information.append(finnhub_client.company_profile2(symbol=ticker)["shareOutstanding"])
+    #         information.append(finnhub_client.quote(ticker)["c"])
+    #         liste_company.append(information)
 
 
     context = {
